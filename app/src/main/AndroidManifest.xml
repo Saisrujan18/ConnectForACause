@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ConnectForACause">
         <activity
+            android:name=".OrganisationListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".OrganisationActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
