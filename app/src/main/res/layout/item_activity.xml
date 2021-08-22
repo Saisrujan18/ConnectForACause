@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgCard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:src="@color/cardview_dark_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/rounded_corner">
+    </com.google.android.material.imageview.ShapeableImageView>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/NGOimg"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@color/white"
+        android:layout_marginStart="5dp"
+
+        app:layout_constraintLeft_toLeftOf="@+id/imgCard"
+        app:layout_constraintTop_toTopOf="@id/imgCard"
+        app:layout_constraintBottom_toBottomOf="@id/imgCard"
+        app:shapeAppearanceOverlay="@style/circular">
+    </com.google.android.material.imageview.ShapeableImageView>
+
+    <TextView
+        android:id="@+id/tvActivityTitle"
+        android:layout_width="200dp"
+        android:layout_height="10dp"
+        app:layout_constraintBottom_toTopOf="@id/tvActivityDescription"
+        app:layout_constraintLeft_toRightOf="@id/NGOimg"
+        app:layout_constraintRight_toRightOf="@+id/imgCard"
+        app:layout_constraintTop_toTopOf="@+id/imgCard">
+    </TextView>
+    <TextView
+        android:id="@+id/tvActivityDescription"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@id/imgCard"
+        app:layout_constraintLeft_toRightOf="@id/NGOimg"
+        app:layout_constraintRight_toRightOf="@+id/imgCard"
+        app:layout_constraintTop_toBottomOf="@+id/tvActivityTitle">
+    </TextView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
