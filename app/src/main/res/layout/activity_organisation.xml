@@ -19,16 +19,37 @@
         app:layout_constraintTop_toTopOf="parent">
     </TextView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvNGODescription"
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/rvNGODescription"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/rvActivityList"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvNGONameHeading">-->
+
+<!--    </androidx.recyclerview.widget.RecyclerView>-->
+
+    <ScrollView
+        android:id="@+id/ScrollviewDescription"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toTopOf="@+id/rvActivityList"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNGONameHeading">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <TextView
+            android:id="@+id/rvNGODescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/description"
+            />
+    </ScrollView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:textAlignment="center"
         android:id="@+id/rvActivityList"
@@ -37,6 +58,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvNGODescription">
+        app:layout_constraintTop_toBottomOf="@+id/ScrollviewDescription">
+
     </androidx.recyclerview.widget.RecyclerView>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
