@@ -4,8 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.item_activity.view.*
 
-class ActivityAdapter(val activities: List<Activity>):RecyclerView.Adapter<ActivityAdapter.ActivityViewHolder>()
+class ActivityAdapter(val activityData: List<Activity_Data>):RecyclerView.Adapter<ActivityAdapter.ActivityViewHolder>()
 {
     inner class ActivityViewHolder(ActivityView: View) : RecyclerView.ViewHolder(ActivityView)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActivityViewHolder {
@@ -14,15 +15,14 @@ class ActivityAdapter(val activities: List<Activity>):RecyclerView.Adapter<Activ
     }
 
     override fun getItemCount(): Int {
-        return activities.size
+        return activityData.size
     }
 
     override fun onBindViewHolder(holder: ActivityViewHolder, position: Int) {
-        //This is not Working
-        //holder.itemView.apply{
-    //      tvActivityTitle=activities.title
-    //      tvActivityDescription=activities.description
-    // }
+        holder.itemView.apply{
+            tvActivityTitle.text=activityData[position].title
+            tvActivityDescription.text=activityData[position].description
+        }
     }
 
 

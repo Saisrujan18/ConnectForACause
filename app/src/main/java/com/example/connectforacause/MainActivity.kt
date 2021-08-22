@@ -15,4 +15,8 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, OrganisationListActivity::class.java)
         startActivity(intent)
     }
+    fun onClickNGOTest(view: View){
+        val intent = Intent(this, OrganisationActivity::class.java)
+        startActivity(intent)
+    }
 }
