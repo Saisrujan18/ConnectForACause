@@ -4,6 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+
+val db = Firebase.firestore
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,7 +16,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun onClickPublic(view: View) {
+    fun onClickPublic(view: View)
+    {
+//      // testing..
+        db.collection("Organisations")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result)
+                {
+                    Toast.makeText(this, "${document.id}", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .addOnFailureListener { _ ->
+                Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
+            }
+
         val intent = Intent(this, OrganisationListActivity::class.java)
         startActivity(intent)
     }
