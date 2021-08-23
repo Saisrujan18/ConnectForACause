@@ -2,10 +2,15 @@ package com.example.connectforacause
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_organisation.*
+import kotlinx.android.synthetic.main.item_description.*
 
 class OrganisationActivity : AppCompatActivity() {
+
+    private var isScrollEnabled:Boolean=false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_organisation)

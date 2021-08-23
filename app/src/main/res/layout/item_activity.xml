@@ -13,19 +13,21 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
-        android:src="@color/cardview_dark_background"
+        android:elevation="10dp"
+        android:src="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/rounded_corner">
+        app:shapeAppearanceOverlay="@style/rounded_corner10">
     </com.google.android.material.imageview.ShapeableImageView>
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/NGOimg_Actvity"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@color/white"
+        android:elevation="10dp"
+        android:src="@color/purple_700"
         android:layout_marginStart="5dp"
 
         app:layout_constraintLeft_toLeftOf="@+id/imgCard_Activity"
@@ -38,6 +40,7 @@
         android:id="@+id/tvActivityTitle"
         android:layout_width="300dp"
         android:layout_height="20dp"
+        android:elevation="10dp"
 
         app:layout_constraintBottom_toTopOf="@id/tvActivityDescription"
         app:layout_constraintHorizontal_bias="0.0"
@@ -52,6 +55,7 @@
         android:layout_width="320dp"
         android:layout_height="140dp"
         android:layout_marginTop="25dp"
+        android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="@id/imgCard_Activity"
         app:layout_constraintLeft_toRightOf="@id/NGOimg_Actvity"
         app:layout_constraintRight_toRightOf="@+id/imgCard_Activity"
