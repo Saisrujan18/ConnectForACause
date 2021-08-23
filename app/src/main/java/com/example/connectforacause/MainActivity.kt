@@ -8,9 +8,10 @@ import android.widget.Toast
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-val db = Firebase.firestore
 
 class MainActivity : AppCompatActivity() {
+    private val db = Firebase.firestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -24,10 +25,10 @@ class MainActivity : AppCompatActivity() {
             .addOnSuccessListener { result ->
                 for (document in result)
                 {
-                    Toast.makeText(this, "${document.id}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "$document.id", Toast.LENGTH_SHORT).show()
                 }
             }
-            .addOnFailureListener { _ ->
+            .addOnFailureListener {
                 Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
             }
 
