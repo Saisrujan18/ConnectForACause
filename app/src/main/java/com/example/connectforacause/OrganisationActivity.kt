@@ -13,6 +13,7 @@ class OrganisationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        this.supportActionBar!!.hide()
         setContentView(R.layout.activity_organisation)
 
         //Testing Assigning Dummy Data

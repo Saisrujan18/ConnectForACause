@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.activity_organisation_list.*
 class OrganisationListActivity : AppCompatActivity(), OrganisationClicked {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        this.supportActionBar!!.hide()
         setContentView(R.layout.activity_organisation_list)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
