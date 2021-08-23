@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "901122405838",
+    "project_id": "connectforacause-8d34c",
+    "storage_bucket": "connectforacause-8d34c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901122405838:android:222a8f15d2d6cefe73e79f",
+        "android_client_info": {
+          "package_name": "com.example.connectforacause"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901122405838-grjt550afujsto3870nuhqu0bsv0pt24.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBS923OzCaMC-jlZs8Ld6UjLTqQEL8FAYY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "901122405838-grjt550afujsto3870nuhqu0bsv0pt24.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
