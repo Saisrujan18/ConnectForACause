@@ -4,4 +4,7 @@ data class Activity_Data(
     val title:String,
     val description:String
 )
+data class Description_Data(
+    val description: String
+)
 

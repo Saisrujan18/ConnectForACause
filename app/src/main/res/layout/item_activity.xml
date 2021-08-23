@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imgCard"
+        android:id="@+id/imgCard_Activity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="5dp"
@@ -22,15 +22,15 @@
     </com.google.android.material.imageview.ShapeableImageView>
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/NGOimg"
+        android:id="@+id/NGOimg_Actvity"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@color/white"
         android:layout_marginStart="5dp"
 
-        app:layout_constraintLeft_toLeftOf="@+id/imgCard"
-        app:layout_constraintTop_toTopOf="@id/imgCard"
-        app:layout_constraintBottom_toBottomOf="@id/imgCard"
+        app:layout_constraintLeft_toLeftOf="@+id/imgCard_Activity"
+        app:layout_constraintTop_toTopOf="@id/imgCard_Activity"
+        app:layout_constraintBottom_toBottomOf="@id/imgCard_Activity"
         app:shapeAppearanceOverlay="@style/circular">
     </com.google.android.material.imageview.ShapeableImageView>
 
@@ -41,9 +41,9 @@
 
         app:layout_constraintBottom_toTopOf="@id/tvActivityDescription"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@id/NGOimg"
-        app:layout_constraintRight_toRightOf="@+id/imgCard"
-        app:layout_constraintTop_toTopOf="@+id/imgCard">
+        app:layout_constraintLeft_toRightOf="@id/NGOimg_Actvity"
+        app:layout_constraintRight_toRightOf="@+id/imgCard_Activity"
+        app:layout_constraintTop_toTopOf="@+id/imgCard_Activity">
 
     </TextView>
 
@@ -52,10 +52,10 @@
         android:layout_width="320dp"
         android:layout_height="140dp"
         android:layout_marginTop="25dp"
-        app:layout_constraintBottom_toBottomOf="@id/imgCard"
-        app:layout_constraintLeft_toRightOf="@id/NGOimg"
-        app:layout_constraintRight_toRightOf="@+id/imgCard"
-        app:layout_constraintTop_toTopOf="@+id/imgCard">
+        app:layout_constraintBottom_toBottomOf="@id/imgCard_Activity"
+        app:layout_constraintLeft_toRightOf="@id/NGOimg_Actvity"
+        app:layout_constraintRight_toRightOf="@+id/imgCard_Activity"
+        app:layout_constraintTop_toTopOf="@+id/imgCard_Activity">
     </TextView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

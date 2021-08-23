@@ -14,12 +14,14 @@ class OrganisationActivity : AppCompatActivity() {
         var activityList=getData()
 
         rvActivityList.layoutManager=LinearLayoutManager(this)
-        var adapter:ActivityAdapter=ActivityAdapter(activityList)
+        var adapter=Activity_DescriptionAdapter(activityList)
         rvActivityList.adapter=adapter
     }
-    private fun getData():MutableList<Activity_Data>
+    private fun getData():MutableList<Any>
     {
+        println(R.string.description)
         return mutableListOf(
+            Description_Data("Hello this is Sample Data for NGO\n"+getString(R.string.description)),
             Activity_Data("XYZ", "SDG 1"),
             Activity_Data("ABC", "SDG 2"),
             Activity_Data("DEF", "SDG 3"),
