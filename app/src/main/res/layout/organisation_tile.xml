@@ -3,51 +3,86 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_margin="1dp"
+    android:layout_marginTop="5dp"
+    android:background="#fef0e4"
     android:padding="6dp"
-    >
+    app:layout_constraintCircleRadius="50dp">
 
-    <ImageView
-        android:id="@+id/oimage"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="2dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:padding="12dp">
 
-    <TextView
-        android:id="@+id/otitle"
-        android:layout_width="335dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="6dp"
-        android:text="Title of the Organisation"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/oimage"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/activitycount"
-        android:layout_width="101dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="6dp"
-        android:text="Active Events"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/oimage"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-    <TextView
-        android:id="@+id/notifications"
-        android:layout_width="101dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="3dp"
-        android:text="Some Info"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/oimage"
-        app:layout_constraintTop_toBottomOf="@+id/otitle" />
+            <TextView
+                android:id="@+id/otitle"
+                android:layout_width="331dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:gravity="center"
+                android:text="Title of the Organisation"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp">
+
+                <ImageView
+                    android:id="@+id/oimage"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/androidparty"
+                    />
+
+                <TextView
+                    android:id="@+id/notifications"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="3dp"
+                    android:text="Some Info in the middle of somewhere where no one came to see the one in the room and the original one got away"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/activitycount"
+                android:layout_width="335dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:text="Active Events"
+                android:textAlignment="textStart"
+                android:textColor="#000000"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
