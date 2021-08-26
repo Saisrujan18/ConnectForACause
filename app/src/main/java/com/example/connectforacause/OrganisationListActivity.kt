@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_organisation_list.*
 
 class OrganisationListActivity : AppCompatActivity(), OrganisationClicked {
 
-    private val receive=Intent()
+    private lateinit var receive:Intent
     private val db=Firebase.firestore
 
     //receive ids same as transmit id
@@ -23,6 +23,7 @@ class OrganisationListActivity : AppCompatActivity(), OrganisationClicked {
         this.supportActionBar!!.hide()
         setContentView(R.layout.activity_organisation_list)
 
+        receive=intent
         recyclerView.layoutManager = LinearLayoutManager(this)
         val items = fetchData()
         val adapter = OrganisationListAdapter(items, this)

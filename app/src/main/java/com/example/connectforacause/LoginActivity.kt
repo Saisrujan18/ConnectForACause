@@ -9,19 +9,21 @@ import kotlinx.android.synthetic.main.activity_auth.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 class LoginActivity : AppCompatActivity() {
 
     //simplify ids to 0 and 1 for login type
-    private val volunteer:Int=0
-    private val ngo:Int=1
+    private val ngo:Int=0
+    private val volunteer:Int=1
+    private var success:Boolean=false
 
     //transmit ids
     private val key_email:String="email"
     private val key_type:String="type"
 
-    lateinit var auth : FirebaseAuth
+    private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,8 +40,8 @@ class LoginActivity : AppCompatActivity() {
             return
         }
         val radioOption:Int=when(checkedID){
-            radioNGO.id->0
-            radioVolunteer.id->1
+            radioNGO.id->ngo
+            radioVolunteer.id->volunteer
             else->-1
         }
         val email:String=etEmail.text.toString()
@@ -49,16 +51,12 @@ class LoginActivity : AppCompatActivity() {
         {
             CoroutineScope(Dispatchers.IO).launch{
                 try{
-                    auth.createUserWithEmailAndPassword(email, password)
+                    auth.createUserWithEmailAndPassword(email, password).await()
+
                     withContext(Dispatchers.Main)
                     {
+                        success=checkSuccess()
                         Toast.makeText(this@LoginActivity, "Registration Successful", Toast.LENGTH_SHORT).show()
-                    }
-                    if(radioOption==volunteer) {
-                        val transmit = Intent(this@LoginActivity, OrganisationListActivity::class.java)
-                        transmit.putExtra(key_email, email)
-                        transmit.putExtra(key_type, volunteer)
-                        startActivity(transmit)
                     }
                 }
                 catch(e: Error)
@@ -73,6 +71,15 @@ class LoginActivity : AppCompatActivity() {
                             else-> Toast.makeText(this@LoginActivity, "Login Error. Please Try Again", Toast.LENGTH_SHORT).show()
                         }
                     }
+                }
+            }
+            if(success)
+            {
+                if(radioOption==volunteer) {
+                    val transmit = Intent(this@LoginActivity, OrganisationListActivity::class.java)
+                    transmit.putExtra(key_email, email)
+                    transmit.putExtra(key_type, volunteer)
+                    startActivity(transmit)
                 }
             }
         }
@@ -86,8 +93,8 @@ class LoginActivity : AppCompatActivity() {
             return
         }
         val radioOption:Int=when(checkedID){
-            radioNGO.id->0
-            radioVolunteer.id->1
+            radioNGO.id->ngo
+            radioVolunteer.id->volunteer
             else->-1
         }
         val email:String=etEmail.text.toString()
@@ -96,15 +103,11 @@ class LoginActivity : AppCompatActivity() {
         {
             CoroutineScope(Dispatchers.IO).launch{
                 try{
-                    auth.signInWithEmailAndPassword(email, password)
+                    auth.signInWithEmailAndPassword(email, password).await()
                     withContext(Dispatchers.Main)
                     {
                         Toast.makeText(this@LoginActivity, "SignIn Successful", Toast.LENGTH_SHORT).show()
-                    }
-                    if(radioOption==volunteer) {
-                        val transmit = Intent(this@LoginActivity, OrganisationListActivity::class.java)
-                        transmit.putExtra(key_type, volunteer)
-                        startActivity(transmit)
+                        success=checkSuccess()
                     }
                 }
                 catch(e: Error)
@@ -121,7 +124,20 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }
+            if(success)
+            {
+                if(radioOption==volunteer) {
+                    val transmit = Intent(this@LoginActivity, OrganisationListActivity::class.java)
+                    transmit.putExtra(key_type, volunteer)
+                    startActivity(transmit)
+                }
+            }
         }
+    }
+    private fun checkSuccess():Boolean{
+        if(auth.currentUser!=null)
+            return true
+        return false
     }
 
 }
