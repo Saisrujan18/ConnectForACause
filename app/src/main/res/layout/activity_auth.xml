@@ -25,6 +25,7 @@
         android:layout_width="150dp"
         android:elevation="4dp"
         android:layout_height="wrap_content"
+        android:textColor="#0A0022"
         android:text="Enter Your Email :"
         android:labelFor="@id/etEmail"
         android:layout_marginStart="20dp"
@@ -40,6 +41,8 @@
         android:completionHint="abcd@efgh.com"
 
         android:ems="10"
+        android:textColor="@color/black"
+        android:backgroundTint="#001C71"
         android:inputType="textEmailAddress"
         android:layout_marginStart="15dp"
         android:layout_marginTop="5dp"
@@ -52,6 +55,7 @@
         android:layout_width="150dp"
         android:elevation="4dp"
         android:layout_height="wrap_content"
+        android:textColor="#0A0022"
         android:text="Enter Your Password :"
         android:labelFor="@id/etPassword"
         android:layout_marginStart="20dp"
@@ -66,6 +70,8 @@
         android:layout_height="40dp"
         android:elevation="4dp"
 
+        android:textColor="@color/black"
+        android:backgroundTint="#001C71"
         android:ems="10"
         android:inputType="textPassword"
         android:layout_marginStart="15dp"
@@ -88,11 +94,13 @@
             android:id="@+id/radioVolunteer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#0A0022"
             android:text="Volunteer"/>
         <RadioButton
             android:id="@+id/radioNGO"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#0A0022"
             android:text="NGO"/>
 
     </RadioGroup>

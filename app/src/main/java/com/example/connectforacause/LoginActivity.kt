@@ -32,6 +32,9 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        if(checkSuccess())
+//            signIn(1, (auth.currentUser?.email)?:"")
+
         setContentView(R.layout.activity_auth)
         auth = FirebaseAuth.getInstance()
         btnRegister.setOnClickListener{registerUser()}
@@ -69,30 +72,34 @@ class LoginActivity : AppCompatActivity() {
                 {
                     withContext(Dispatchers.Main)
                     {
-                        when(e.message?:"")
-                        {
-                            "auth/email-already-exists"-> Toast.makeText(this@LoginActivity, "User $email has already Registered. Please Sign In", Toast.LENGTH_SHORT).show()
-                            "auth/invalid-email"-> Toast.makeText(this@LoginActivity, "The mail-id entered $email is invalid. Try Again", Toast.LENGTH_SHORT).show()
-                            "auth/invalid-password"-> Toast.makeText(this@LoginActivity, "The password entered is invalid (Minimum 6 characters). Try Again", Toast.LENGTH_SHORT).show()
-                            else-> Toast.makeText(this@LoginActivity, "Login Error. Please Try Again", Toast.LENGTH_SHORT).show()
-                        }
+                        Toast.makeText(this@LoginActivity, e.message, Toast.LENGTH_LONG).show()
+//                        when(e.message?:"")
+//                        {
+//                            "auth/email-already-exists"-> Toast.makeText(this@LoginActivity, "User $email has already Registered. Please Sign In", Toast.LENGTH_SHORT).show()
+//                            "auth/invalid-email"-> Toast.makeText(this@LoginActivity, "The mail-id entered $email is invalid. Try Again", Toast.LENGTH_SHORT).show()
+//                            "auth/invalid-password"-> Toast.makeText(this@LoginActivity, "The password entered is invalid (Minimum 6 characters). Try Again", Toast.LENGTH_SHORT).show()
+//                            else-> Toast.makeText(this@LoginActivity, "Login Error. Please Try Again", Toast.LENGTH_SHORT).show()
+//                        }
                     }
                 }
                 if(success)
-                {
-                    if(radioOption==volunteer) {
-                        val transmit = Intent(this@LoginActivity, OrganisationListActivity::class.java)
-                        val info= Bundle()
-                        info.putInt(key_auth, register)
-                        info.putInt(key_type, volunteer)
-                        info.putString(key_email, email)
-                        transmit.putExtras(info)
-                        startActivity(transmit)
-                    }
-                }
+                    register(radioOption, email)
             }
         }
     }
+    private fun register(radioOption:Int, email:String)
+    {
+        if(radioOption==volunteer) {
+            val transmit = Intent(this@LoginActivity, OrganisationListActivity::class.java)
+            val info= Bundle()
+            info.putInt(key_auth, register)
+            info.putInt(key_type, volunteer)
+            info.putString(key_email, email)
+            transmit.putExtras(info)
+            startActivity(transmit)
+        }
+    }
+
     private fun signInUser()
     {
         val checkedID:Int=radioChoice.checkedRadioButtonId
@@ -123,28 +130,31 @@ class LoginActivity : AppCompatActivity() {
                 {
                     withContext(Dispatchers.Main)
                     {
-                        when(e.message)
-                        {
-                            "auth/email-already-exists"-> Toast.makeText(this@LoginActivity, "User $email has already Registered. Please Sign In", Toast.LENGTH_SHORT).show()
-                            "auth/invalid-email"-> Toast.makeText(this@LoginActivity, "The mail-id entered $email is invalid. Try Again", Toast.LENGTH_SHORT).show()
-                            "auth/invalid-password"-> Toast.makeText(this@LoginActivity, "The password entered is invalid (Minimum 6 characters). Try Again", Toast.LENGTH_SHORT).show()
-                            else-> Toast.makeText(this@LoginActivity, "Login Error. Please Try Again", Toast.LENGTH_SHORT).show()
-                        }
+                        Toast.makeText(this@LoginActivity, e.message, Toast.LENGTH_LONG).show()
+//                        when(e.localizedMessage)
+//                        {
+//                            "auth/email-already-exists"-> Toast.makeText(this@LoginActivity, "User $email has already Registered. Please Sign In", Toast.LENGTH_SHORT).show()
+//                            "auth/invalid-email"-> Toast.makeText(this@LoginActivity, "The mail-id entered $email is invalid. Try Again", Toast.LENGTH_SHORT).show()
+//                            "auth/invalid-password"-> Toast.makeText(this@LoginActivity, "The password entered is invalid (Minimum 6 characters). Try Again", Toast.LENGTH_SHORT).show()
+//                            else-> Toast.makeText(this@LoginActivity, "Login Error. Please Try Again", Toast.LENGTH_SHORT).show()
+//                        }
                     }
                 }
                 if(success)
-                {
-                    if(radioOption==volunteer) {
-                        val transmit = Intent(this@LoginActivity, OrganisationListActivity::class.java)
-                        val info= Bundle()
-                        info.putInt(key_auth, signin)
-                        info.putInt(key_type, volunteer)
-                        info.putString(key_email, email)
-                        transmit.putExtras(info)
-                        startActivity(transmit)
-                    }
-                }
+                    signIn(radioOption, email)
             }
+        }
+    }
+    private fun signIn(radioOption:Int, email:String)
+    {
+        if(radioOption==volunteer) {
+            val transmit = Intent(this@LoginActivity, OrganisationListActivity::class.java)
+            val info= Bundle()
+            info.putInt(key_auth, signin)
+            info.putInt(key_type, volunteer)
+            info.putString(key_email, email)
+            transmit.putExtras(info)
+            startActivity(transmit)
         }
     }
     private fun checkSuccess():Boolean{

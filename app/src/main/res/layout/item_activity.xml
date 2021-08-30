@@ -42,6 +42,8 @@
         android:layout_height="20dp"
         android:elevation="10dp"
 
+        android:textStyle="bold|italic"
+        android:textColor="#750000"
         app:layout_constraintBottom_toTopOf="@id/tvActivityDescription"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toRightOf="@id/NGOimg_Actvity"
@@ -56,6 +58,8 @@
         android:layout_height="140dp"
         android:layout_marginTop="25dp"
         android:elevation="10dp"
+
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@id/imgCard_Activity"
         app:layout_constraintLeft_toRightOf="@id/NGOimg_Actvity"
         app:layout_constraintRight_toRightOf="@+id/imgCard_Activity"
