@@ -14,20 +14,26 @@ import kotlinx.coroutines.withContext
 
 class LoginActivity : AppCompatActivity() {
 
-    //simplify ids to 0 and 1 for login type
+    //simplify ids to 0 and 1 for user type and login type
     private val ngo:Int=0
     private val volunteer:Int=1
+
+    private val register:Int=0
+    private val signin:Int=1
+
     private var success:Boolean=false
 
     //transmit ids
     private val key_email:String="email"
     private val key_type:String="type"
+    private val key_auth:String="authtype"
 
     private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
+        auth = FirebaseAuth.getInstance()
         btnRegister.setOnClickListener{registerUser()}
         btnSignIn.setOnClickListener{signInUser()}
     }
@@ -63,7 +69,7 @@ class LoginActivity : AppCompatActivity() {
                 {
                     withContext(Dispatchers.Main)
                     {
-                        when(e.message)
+                        when(e.message?:"")
                         {
                             "auth/email-already-exists"-> Toast.makeText(this@LoginActivity, "User $email has already Registered. Please Sign In", Toast.LENGTH_SHORT).show()
                             "auth/invalid-email"-> Toast.makeText(this@LoginActivity, "The mail-id entered $email is invalid. Try Again", Toast.LENGTH_SHORT).show()
@@ -72,14 +78,17 @@ class LoginActivity : AppCompatActivity() {
                         }
                     }
                 }
-            }
-            if(success)
-            {
-                if(radioOption==volunteer) {
-                    val transmit = Intent(this@LoginActivity, OrganisationListActivity::class.java)
-                    transmit.putExtra(key_email, email)
-                    transmit.putExtra(key_type, volunteer)
-                    startActivity(transmit)
+                if(success)
+                {
+                    if(radioOption==volunteer) {
+                        val transmit = Intent(this@LoginActivity, OrganisationListActivity::class.java)
+                        val info= Bundle()
+                        info.putInt(key_auth, register)
+                        info.putInt(key_type, volunteer)
+                        info.putString(key_email, email)
+                        transmit.putExtras(info)
+                        startActivity(transmit)
+                    }
                 }
             }
         }
@@ -106,7 +115,7 @@ class LoginActivity : AppCompatActivity() {
                     auth.signInWithEmailAndPassword(email, password).await()
                     withContext(Dispatchers.Main)
                     {
-                        Toast.makeText(this@LoginActivity, "SignIn Successful", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@LoginActivity, "Sign In Successful", Toast.LENGTH_SHORT).show()
                         success=checkSuccess()
                     }
                 }
@@ -123,13 +132,17 @@ class LoginActivity : AppCompatActivity() {
                         }
                     }
                 }
-            }
-            if(success)
-            {
-                if(radioOption==volunteer) {
-                    val transmit = Intent(this@LoginActivity, OrganisationListActivity::class.java)
-                    transmit.putExtra(key_type, volunteer)
-                    startActivity(transmit)
+                if(success)
+                {
+                    if(radioOption==volunteer) {
+                        val transmit = Intent(this@LoginActivity, OrganisationListActivity::class.java)
+                        val info= Bundle()
+                        info.putInt(key_auth, signin)
+                        info.putInt(key_type, volunteer)
+                        info.putString(key_email, email)
+                        transmit.putExtras(info)
+                        startActivity(transmit)
+                    }
                 }
             }
         }
