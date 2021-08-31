@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ConnectForACause">
         <activity
+            android:name=".OrganisationHomeScreen"
+            android:exported="true" />
+        <activity
+            android:name=".MakePost"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true" />
         <activity

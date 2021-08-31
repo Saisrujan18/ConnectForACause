@@ -56,7 +56,7 @@ class OrganisationListActivity : AppCompatActivity(), OrganisationClicked {
             entry.put(key_email, email?:"")
             entry.put(key_type, type?:-1)
             db.collection("Users").add(entry)
-            Toast.makeText(this, type.toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, type.toString(), Toast.LENGTH_SHORT).show()
         }
         return list
     }

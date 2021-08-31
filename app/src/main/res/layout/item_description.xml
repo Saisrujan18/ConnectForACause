@@ -51,30 +51,20 @@
         app:shapeAppearanceOverlay="@style/rounded_corner10">
     </com.google.android.material.imageview.ShapeableImageView>
 
-    <ScrollView
-        android:id="@+id/svDescription"
+    <TextView
+        android:textColor="@color/white"
+        android:id="@+id/tvNGODescription"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="160dp"
+        android:layout_height="wrap_content"
+
         android:layout_marginBottom="20dp"
         android:elevation="4dp"
-
-        app:layout_constraintBottom_toBottomOf="@id/imgCard_Desc"
-        app:layout_constraintEnd_toEndOf="@id/imgCard_Desc"
-        app:layout_constraintStart_toStartOf="@id/imgCard_Desc"
-        app:layout_constraintTop_toTopOf="@id/imgCard_Desc">
-
-        <TextView
-            android:textColor="@color/white"
-            android:id="@+id/tvNGODescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/description"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginTop="10dp"/>
-    </ScrollView>
+        android:maxLength="750"
+        android:text="@string/description"
+        android:justificationMode="inter_word"
+        app:layout_constraintTop_toBottomOf="@id/NGOimg_Desc"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

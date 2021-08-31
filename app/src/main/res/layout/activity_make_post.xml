@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MakePost">
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/postCard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="60dp"
+        android:elevation="4dp"
+        android:src="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/rounded_corner2">
+    </com.google.android.material.imageview.ShapeableImageView>
+    <TextView
+        android:id="@+id/tvPostTitle"
+        android:layout_width="match_parent"
+        android:elevation="4dp"
+        android:layout_height="wrap_content"
+        android:textColor="#0A0022"
+        android:textSize="18sp"
+        android:text="Field 1"
+        android:labelFor="@id/etPostTitle"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toTopOf="@id/postCard"
+        app:layout_constraintStart_toStartOf="@id/postCard">
+    </TextView>
+    <EditText
+        android:id="@+id/etPostTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+
+        android:ems="10"
+        android:maxLength="100"
+        android:textColor="@color/black"
+        android:backgroundTint="#001C71"
+        android:inputType="textMultiLine"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="5dp"
+
+        app:layout_constraintTop_toBottomOf="@id/tvPostTitle"
+        app:layout_constraintStart_toStartOf="@id/postCard"/>
+
+
+    <TextView
+        android:id="@+id/tvPostDescription"
+        android:layout_width="match_parent"
+        android:elevation="4dp"
+        android:layout_height="wrap_content"
+        android:textColor="#0A0022"
+        android:textSize="18sp"
+        android:text="Field 2"
+        android:labelFor="@id/etPostDescription"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toBottomOf="@id/etPostTitle"
+
+        app:layout_constraintStart_toStartOf="@id/postCard">
+    </TextView>
+    <EditText
+        android:id="@+id/etPostDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+
+        android:ems="10"
+        android:maxLength="500"
+        android:textColor="@color/black"
+        android:backgroundTint="#001C71"
+        android:inputType="textMultiLine"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="5dp"
+
+        app:layout_constraintTop_toBottomOf="@id/tvPostDescription"
+        app:layout_constraintStart_toStartOf="@id/postCard" />
+
+    <TextView
+        android:id="@+id/tvPostImage"
+        android:layout_width="match_parent"
+        android:elevation="4dp"
+        android:layout_height="wrap_content"
+        android:textColor="#0A0022"
+        android:textSize="18sp"
+        android:text="Field 3"
+        android:labelFor="@id/etPostImage"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+
+        app:layout_constraintTop_toBottomOf="@id/etPostDescription"
+        app:layout_constraintStart_toStartOf="@id/postCard">
+    </TextView>
+    <EditText
+        android:id="@+id/etPostImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+
+        android:ems="10"
+        android:textColor="@color/black"
+        android:backgroundTint="#001C71"
+        android:inputType="textUri"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="30dp"
+
+        app:layout_constraintTop_toBottomOf="@id/tvPostImage"
+        app:layout_constraintStart_toStartOf="@id/postCard" />
+    <Button
+        android:id="@+id/btnPost"
+        android:elevation="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stateListAnimator="@null"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="5dp"
+        android:text="Post Activity"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/postCard"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

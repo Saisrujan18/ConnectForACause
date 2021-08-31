@@ -25,7 +25,6 @@ class OrganisationActivity : AppCompatActivity() {
     }
     private fun getData():MutableList<Any>
     {
-        println(R.string.description)
         return mutableListOf(
             Description_Data("Hello this is Sample Data for NGO\n"+getString(R.string.description)),
             Activity_Data("XYZ", "SDG 1"),

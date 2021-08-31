@@ -27,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
     private val key_email:String="email"
     private val key_type:String="type"
     private val key_auth:String="authtype"
+    private val key_HSState:String="HSState"
 
     private lateinit var auth : FirebaseAuth
 
@@ -98,6 +99,15 @@ class LoginActivity : AppCompatActivity() {
             transmit.putExtras(info)
             startActivity(transmit)
         }
+        if(radioOption==ngo){
+            val transmit = Intent(this@LoginActivity, OrganisationHomeScreen::class.java)
+            val info= Bundle()
+            info.putInt(key_HSState, register)
+            info.putInt(key_type, ngo)
+            info.putString(key_email, email)
+            transmit.putExtras(info)
+            startActivity(transmit)
+        }
     }
 
     private fun signInUser()
@@ -152,6 +162,15 @@ class LoginActivity : AppCompatActivity() {
             val info= Bundle()
             info.putInt(key_auth, signin)
             info.putInt(key_type, volunteer)
+            info.putString(key_email, email)
+            transmit.putExtras(info)
+            startActivity(transmit)
+        }
+        if(radioOption==ngo){
+            val transmit = Intent(this@LoginActivity, OrganisationHomeScreen::class.java)
+            val info= Bundle()
+            info.putInt(key_HSState, signin)
+            info.putInt(key_type, ngo)
             info.putString(key_email, email)
             transmit.putExtras(info)
             startActivity(transmit)
