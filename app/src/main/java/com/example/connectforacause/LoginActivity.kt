@@ -35,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 //        if(checkSuccess())
 //            signIn(1, (auth.currentUser?.email)?:"")
-
+        this.supportActionBar!!.hide()
         setContentView(R.layout.activity_auth)
         auth = FirebaseAuth.getInstance()
         btnRegister.setOnClickListener{registerUser()}
