@@ -1,8 +1,10 @@
 package com.example.connectforacause
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.ktx.firestore
@@ -39,11 +41,24 @@ class OrganisationListActivity : AppCompatActivity(), OrganisationClicked {
         recyclerView.adapter = adapter
     }
 
-    private fun fetchData(): ArrayList<String>{
-        val list = ArrayList<String>()
-        for (i in 0 until 100){
-            list.add("Item $i")
-        }
+    private fun fetchData(): ArrayList<OrganisationTileInfo>{
+        val list = ArrayList<OrganisationTileInfo>()
+
+        db.collection("Organisations")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result){
+                    val title:String = document.data["Title"].toString()
+                    val description:String = document.data["Description"].toString()
+                    val activities: List<String> = document.data.get("Activities") as List<String>
+                    val photo:String = document.data["Photo"].toString()
+//                    list.add(OrganisationTileInfo(Title = title, Description = description, Activities = activities, Photo = photo))
+                    Log.d(TAG, "Title: ${photo}")
+                }
+            }
+            .addOnFailureListener {
+                Log.e(TAG, "Error getting data.")
+            }
 
         val extraInfo=receive.extras
         val login_type=extraInfo?.getInt(key_auth)

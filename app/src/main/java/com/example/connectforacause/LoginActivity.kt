@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthException
 import kotlinx.android.synthetic.main.activity_auth.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -38,8 +39,8 @@ class LoginActivity : AppCompatActivity() {
         this.supportActionBar!!.hide()
         setContentView(R.layout.activity_auth)
         auth = FirebaseAuth.getInstance()
-        btnRegister.setOnClickListener{registerUser()}
-        btnSignIn.setOnClickListener{signInUser()}
+        btnRegister.setOnClickListener{ registerUser() }
+        btnSignIn.setOnClickListener{ signInUser() }
     }
     private fun registerUser()
     {
@@ -69,18 +70,11 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(this@LoginActivity, "Registration Successful", Toast.LENGTH_SHORT).show()
                     }
                 }
-                catch(e: Error)
+                catch(e: FirebaseAuthException)
                 {
                     withContext(Dispatchers.Main)
                     {
                         Toast.makeText(this@LoginActivity, e.message, Toast.LENGTH_LONG).show()
-//                        when(e.message?:"")
-//                        {
-//                            "auth/email-already-exists"-> Toast.makeText(this@LoginActivity, "User $email has already Registered. Please Sign In", Toast.LENGTH_SHORT).show()
-//                            "auth/invalid-email"-> Toast.makeText(this@LoginActivity, "The mail-id entered $email is invalid. Try Again", Toast.LENGTH_SHORT).show()
-//                            "auth/invalid-password"-> Toast.makeText(this@LoginActivity, "The password entered is invalid (Minimum 6 characters). Try Again", Toast.LENGTH_SHORT).show()
-//                            else-> Toast.makeText(this@LoginActivity, "Login Error. Please Try Again", Toast.LENGTH_SHORT).show()
-//                        }
                     }
                 }
                 if(success)
@@ -136,18 +130,11 @@ class LoginActivity : AppCompatActivity() {
                         success=checkSuccess()
                     }
                 }
-                catch(e: Error)
+                catch(e: FirebaseAuthException)
                 {
                     withContext(Dispatchers.Main)
                     {
                         Toast.makeText(this@LoginActivity, e.message, Toast.LENGTH_LONG).show()
-//                        when(e.localizedMessage)
-//                        {
-//                            "auth/email-already-exists"-> Toast.makeText(this@LoginActivity, "User $email has already Registered. Please Sign In", Toast.LENGTH_SHORT).show()
-//                            "auth/invalid-email"-> Toast.makeText(this@LoginActivity, "The mail-id entered $email is invalid. Try Again", Toast.LENGTH_SHORT).show()
-//                            "auth/invalid-password"-> Toast.makeText(this@LoginActivity, "The password entered is invalid (Minimum 6 characters). Try Again", Toast.LENGTH_SHORT).show()
-//                            else-> Toast.makeText(this@LoginActivity, "Login Error. Please Try Again", Toast.LENGTH_SHORT).show()
-//                        }
                     }
                 }
                 if(success)
@@ -177,9 +164,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
     private fun checkSuccess():Boolean{
-        if(auth.currentUser!=null)
-            return true
-        return false
+        return auth.currentUser!=null
     }
 
 }

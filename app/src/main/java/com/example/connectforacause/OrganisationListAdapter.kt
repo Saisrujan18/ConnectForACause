@@ -7,19 +7,20 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class OrganisationListAdapter(private val items: ArrayList<String>, private val listener: OrganisationClicked): RecyclerView.Adapter<OrganisationListViewHolder>() {
+class OrganisationListAdapter(private val items: ArrayList<OrganisationTileInfo>, private val listener: OrganisationClicked): RecyclerView.Adapter<OrganisationListViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrganisationListViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.organisation_tile, parent, false)
         val viewHolder = OrganisationListViewHolder(view)
         view.setOnClickListener{
-            listener.onClick(items[viewHolder.adapterPosition])
+            listener.onClick(items[viewHolder.adapterPosition].Title)
         }
         return viewHolder
     }
 
     override fun onBindViewHolder(holder: OrganisationListViewHolder, position: Int) {
         val currentItem = items[position]
-        holder.title.text = currentItem
+        holder.title.text = currentItem.Title
+        holder.activityCount.text = currentItem.Activities?.size as String
     }
 
     override fun getItemCount(): Int {
