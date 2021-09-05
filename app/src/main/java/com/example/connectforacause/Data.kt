@@ -9,7 +9,7 @@ data class Description_Data(
 )
 
 data class OrganisationTileInfo(
-    val Activities: ArrayList<String> = ArrayList(),
+    val Activities: MutableList<String> = mutableListOf(),
     val Description: String = "",
     val Photo: String = "",
     val Title: String = "",
@@ -18,8 +18,8 @@ data class OrganisationTileInfo(
 data class ActivityInfo(
     val Volunteers: ArrayList<String> = ArrayList(),
     val Count: Int = 0,
+    val Description: String="",
     val Status: String = "",
     val Theme: String = "",
     val Title: String = "",
-
 )

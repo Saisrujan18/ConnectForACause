@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -87,25 +88,20 @@ class OrganisationListActivity : AppCompatActivity(), OrganisationClicked {
     override fun onClick(Oid: String) {
         // intent Here.
         val organisationIntent = Intent(this@OrganisationListActivity, OrganisationActivity::class.java)
-        val Data: ArrayList<Any> = arrayListOf()
+        var Data: ArrayList<ActivityInfo>
         var Description: String = "";
+        Log.d(TAG, "DATA: SHIT ")
+        val con = this
         CoroutineScope(Dispatchers.IO).launch {
             val organisationDoc =
                 getOrganisationDetails(Oid).await().toObject(OrganisationTileInfo::class.java)
+            Log.d(TAG, "actini ${organisationDoc?.Activities}")
             Description = organisationDoc?.Description!!
-//            for ( activity in organisationDoc.Activities){
-//                GlobalScope.launch {
-//                    val activityDoc = getActivityDetails(activity).await().toObject(ActivityInfo::class.java)
-//                    Data.add(
-//                        Activity_Data(
-//                            activityDoc?.Title!!,
-//                            activityDoc.Theme
-//                        )
-//                    )
-//                }
-//            }
-            organisationIntent.putExtra("Description", Description)
 
+            Data = db.collection("Activities").whereIn(FieldPath.documentId(), organisationDoc.Activities).get().await().toObjects(ActivityInfo::class.java) as ArrayList<ActivityInfo>
+            organisationIntent.putExtra("Description", Description)
+            organisationIntent.putExtra("Activities", Data)
+            Log.d(TAG, "HERE ${Data}")
             startActivity(organisationIntent)
         }
         Toast.makeText(this, "clicked : $Oid", Toast.LENGTH_LONG).show()
