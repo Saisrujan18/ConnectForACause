@@ -9,7 +9,7 @@ data class Description_Data(
 )
 
 data class OrganisationTileInfo(
-    val Activities: List<String>,
+    val Activities: ArrayList<String> = ArrayList(),
     val Description: String = "",
     val Photo: String = "",
     val Title: String = "",

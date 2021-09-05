@@ -6,25 +6,32 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 
-class OrganisationListAdapter(private val items: ArrayList<OrganisationTileInfo>, private val listener: OrganisationClicked): RecyclerView.Adapter<OrganisationListViewHolder>() {
+
+class OrganisationListAdapter(private val listener: OrganisationClicked,
+                              options: FirestoreRecyclerOptions<OrganisationTileInfo>
+): FirestoreRecyclerAdapter<OrganisationTileInfo, OrganisationListViewHolder>(options) {
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrganisationListViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.organisation_tile, parent, false)
         val viewHolder = OrganisationListViewHolder(view)
         view.setOnClickListener{
-            listener.onClick(items[viewHolder.adapterPosition].Title)
+            listener.onClick(snapshots.getSnapshot(viewHolder.adapterPosition).id)
         }
         return viewHolder
     }
 
-    override fun onBindViewHolder(holder: OrganisationListViewHolder, position: Int) {
-        val currentItem = items[position]
-        holder.title.text = currentItem.Title
-        holder.activityCount.text = currentItem.Activities?.size as String
-    }
 
-    override fun getItemCount(): Int {
-        return items.size
+    override fun onBindViewHolder(
+        holder: OrganisationListViewHolder,
+        position: Int,
+        model: OrganisationTileInfo
+    ) {
+        holder.title.text = model.Title
+        holder.activityCount.text = "Active: ${model.Activities?.size.toString()}"
     }
 }
 
