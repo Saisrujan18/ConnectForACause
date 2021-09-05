@@ -31,6 +31,7 @@ class OrganisationHomeScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        this.supportActionBar!!.hide()
         setContentView(R.layout.activity_organisation_home_screen)
 
         receive=intent

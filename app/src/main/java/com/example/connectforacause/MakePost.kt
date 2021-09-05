@@ -20,6 +20,7 @@ class MakePost : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+        this.supportActionBar!!.hide()
         setContentView(R.layout.activity_make_post)
 
         reveive=intent

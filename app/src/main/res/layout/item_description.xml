@@ -2,57 +2,68 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="10dp"
+    app:shapeAppearanceOverlay="@style/rounded_corner10"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imgCard_Desc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
         android:elevation="4dp"
-        android:src="#FF003C"
+        android:src="@color/theme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/rounded_corner5">
     </com.google.android.material.imageview.ShapeableImageView>
+    <!--        android:layout_marginTop="15dp"-->
+
     <TextView
         android:id="@+id/tvNGONameHeading"
-        android:text="@string/organization_name"
-        android:textSize="20sp"
-        android:textStyle="bold|italic"
-        android:textColor="@color/white"
-        android:elevation="4dp"
-
-        android:textAlignment="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        app:layout_constraintEnd_toEndOf="@id/imgCard_Desc"
-        app:layout_constraintStart_toStartOf="@id/imgCard_Desc"
-        app:layout_constraintTop_toTopOf="@id/imgCard_Desc">
-    </TextView>
+        android:elevation="4dp"
+        android:text="@string/organization_name"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/NGOimg_Desc"
+        app:layout_constraintEnd_toEndOf="@+id/imgCard_Desc"
+        app:layout_constraintStart_toStartOf="@+id/imgCard_Desc"
+        app:layout_constraintTop_toTopOf="@+id/imgCard_Desc" />
+    <!--        android:layout_marginTop="48dp"-->
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/NGOimg_Desc"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:src="@color/white"
+        android:layout_marginBottom="20dp"
         android:elevation="4dp"
+        android:src="@color/black"
 
-        android:layout_marginTop="48dp"
         app:layout_constraintLeft_toLeftOf="@+id/imgCard_Desc"
         app:layout_constraintRight_toRightOf="@id/imgCard_Desc"
-        app:layout_constraintTop_toTopOf="@id/imgCard_Desc"
-        app:shapeAppearanceOverlay="@style/rounded_corner10">
-    </com.google.android.material.imageview.ShapeableImageView>
+        app:layout_constraintTop_toBottomOf="@+id/tvNGONameHeading"
+        app:layout_constraintBottom_toTopOf="@+id/tvNGODescription"
+        app:shapeAppearanceOverlay="@style/rounded_corner10"
+        />
 
     <TextView
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:id="@+id/tvNGODescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -63,8 +74,12 @@
         android:text="@string/description"
         android:justificationMode="inter_word"
         app:layout_constraintTop_toBottomOf="@id/NGOimg_Desc"
+        app:layout_constraintBottom_toBottomOf="@+id/imgCard_Desc"
+        app:layout_constraintEnd_toEndOf="@id/imgCard_Desc"
+        app:layout_constraintStart_toStartOf="@id/imgCard_Desc"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

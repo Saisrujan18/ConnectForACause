@@ -1,69 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/heart"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="10dp"
+    android:background="@color/white"
+    android:elevation="10dp"
+    >
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imgCard_Activity"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"
-        android:elevation="4dp"
-        android:src="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/rounded_corner10">
-    </com.google.android.material.imageview.ShapeableImageView>
+    <!--    <com.google.android.material.imageview.ShapeableImageView-->
+    <!--        android:id="@+id/imgCard_Activity"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_marginLeft="0dp"-->
+    <!--        android:layout_marginTop="0dp"-->
+    <!--        android:layout_marginRight="0dp"-->
+    <!--        android:layout_marginBottom="0dp"-->
+    <!--        android:elevation="4dp"-->
+    <!--        android:src="@color/white"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:shapeAppearanceOverlay="@style/rounded_corner10">-->
+    <!--    </com.google.android.material.imageview.ShapeableImageView>-->
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/NGOimg_Actvity"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:elevation="10dp"
-        android:src="@color/purple_700"
-        android:layout_marginStart="5dp"
+    <!--    <com.google.android.material.imageview.ShapeableImageView-->
+    <!--        android:id="@+id/NGOimg_Actvity"-->
+    <!--        android:layout_width="50dp"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:elevation="10dp"-->
+    <!--        android:src="@color/purple_700"-->
+    <!--        android:layout_marginStart="5dp"-->
 
-        app:layout_constraintLeft_toLeftOf="@+id/imgCard_Activity"
-        app:layout_constraintTop_toTopOf="@id/imgCard_Activity"
-        app:layout_constraintBottom_toBottomOf="@id/imgCard_Activity"
-        app:shapeAppearanceOverlay="@style/circular">
-    </com.google.android.material.imageview.ShapeableImageView>
+    <!--        app:layout_constraintLeft_toLeftOf="@+id/imgCard_Activity"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/imgCard_Activity"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@id/imgCard_Activity"-->
+    <!--        app:shapeAppearanceOverlay="@style/circular">-->
+    <!--    </com.google.android.material.imageview.ShapeableImageView>-->
+    <!--        app:layout_constraintLeft_toRightOf="@id/NGOimg_Actvity"-->
 
     <TextView
         android:id="@+id/tvActivityTitle"
-        android:layout_width="300dp"
-        android:layout_height="20dp"
-        android:elevation="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
 
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:elevation="10dp"
+        android:textAlignment="textStart"
+        android:textColor="@color/green"
         android:textStyle="bold|italic"
-        android:textColor="#750000"
         app:layout_constraintBottom_toTopOf="@id/tvActivityDescription"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@id/NGOimg_Actvity"
-        app:layout_constraintRight_toRightOf="@+id/imgCard_Activity"
-        app:layout_constraintTop_toTopOf="@+id/imgCard_Activity">
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </TextView>
+    <!--    app:layout_constraintLeft_toRightOf="@id/NGOimg_Actvity"-->
 
     <TextView
         android:id="@+id/tvActivityDescription"
-        android:layout_width="320dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
         android:elevation="10dp"
-
+        android:maxHeight="140dp"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@id/imgCard_Activity"
-        app:layout_constraintLeft_toRightOf="@id/NGOimg_Actvity"
-        app:layout_constraintRight_toRightOf="@+id/imgCard_Activity"
-        app:layout_constraintTop_toTopOf="@+id/imgCard_Activity">
-    </TextView>
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvActivityTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
