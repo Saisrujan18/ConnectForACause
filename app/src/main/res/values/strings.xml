@@ -12,4 +12,22 @@ distracted by the readable content of a page when looking at its layout. The poi
     <string name="password">password</string>
     <string name="email_id">Email Id</string>
 
+    <!-- For LoginActivity, OrganisationHomeScreen, OrganisationListActivity -->
+    <string name="key_email">email</string>
+    <string name="key_type">type</string>
+    <string name="key_auth">authtype</string>
+
+    <!-- For LoginActivity, OrganisationHomeScreen -->
+    <string name="key_HSState">HSState</string>
+
+    <!-- For MakePost, OrganisationHomeScreen -->
+    <string name="key_title">title</string>
+    <string name="key_description">desc</string>
+    <string name="key_url">image</string>
+    <string name="key_editType">HSState</string>
+
+    <integer name="ngo">0</integer>
+    <integer name="volunteer">1</integer>
+
+
 </resources>

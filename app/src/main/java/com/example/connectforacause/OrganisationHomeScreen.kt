@@ -14,14 +14,6 @@ class OrganisationHomeScreen : AppCompatActivity() {
 
     private val db= Firebase.firestore
 
-    private val key_email:String="email"
-    private val key_type:String="type"
-
-    private val key_title="title"
-    private val key_description="desc"
-    private val key_url="image"
-    private val key_HSState="HSState"
-
     private val register:Int=0
     private val signin:Int=1
     private val editOrg:Int=2
@@ -33,6 +25,7 @@ class OrganisationHomeScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         this.supportActionBar!!.hide()
         setContentView(R.layout.activity_organisation_home_screen)
+        this.supportActionBar!!.hide()
 
         receive=intent
         updateData()
@@ -64,26 +57,26 @@ class OrganisationHomeScreen : AppCompatActivity() {
         val info=receive.extras
         if(info!=null)
         {
-            val entryType=info.getInt(key_HSState)
+            val entryType=info.getInt(getString(R.string.key_HSState))
             if(entryType==register)
             {
-                val email=info.getString(key_email)
-                val type=info.getInt(key_type)
+                val email=info.getString(getString(R.string.key_email))
+                val type=info.getInt(getString(R.string.key_type))
                 var entry : HashMap<String, Any> = HashMap<String, Any>()
-                entry.put(key_email, email?:"")
+                entry.put(getString(R.string.key_email), email?:"")
                 db.collection("Organisations").add(entry)
-                entry.put(key_type, type?:-1)
+                entry.put(getString(R.string.key_type), type?:-1)
                 db.collection("Users").add(entry)
             }
             if(entryType==editOrg)
             {
-                val title=info.getString(key_title)
-                val description=info.getString(key_description)
-                val imgURL=info.getString(key_url)
+                val title=info.getString(getString(R.string.key_title))
+                val description=info.getString(getString(R.string.key_description))
+                val imgURL=info.getString(getString(R.string.key_url))
                 var entry : HashMap<String, Any> = HashMap<String, Any>()
-                entry.put(key_title, title?:"")
-                entry.put(key_description, description?:"")
-                entry.put(key_url, imgURL?:"")
+                entry.put(getString(R.string.key_title), title?:"")
+                entry.put(getString(R.string.key_description), description?:"")
+                entry.put(getString(R.string.key_url), imgURL?:"")
                 //Add it to the same Organisation idk How
             }
             if(entryType==addActivity)
@@ -97,7 +90,7 @@ class OrganisationHomeScreen : AppCompatActivity() {
         Toast.makeText(this, "Evde Thanne deyy", Toast.LENGTH_LONG)
         val transmit=Intent(this, MakePost::class.java)
         val info=Bundle()
-        info.putInt(key_HSState, editOrg)
+        info.putInt(getString(R.string.key_HSState), editOrg)
         transmit.putExtras(info)
         startActivity(transmit)
     }
@@ -105,7 +98,7 @@ class OrganisationHomeScreen : AppCompatActivity() {
     {
         val transmit=Intent(this, MakePost::class.java)
         val info=Bundle()
-        info.putInt(key_HSState, addActivity)
+        info.putInt(getString(R.string.key_HSState), addActivity)
         transmit.putExtras(info)
         startActivity(transmit)
     }

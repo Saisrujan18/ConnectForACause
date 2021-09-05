@@ -9,10 +9,6 @@ import kotlinx.android.synthetic.main.activity_make_post.*
 class MakePost : AppCompatActivity() {
 
     private lateinit var reveive:Intent
-    private val key_title="title"
-    private val key_description="desc"
-    private val key_url="image"
-    private val key_editType="HSState"
 
     private val editOrg:Int=2
     private val addActivity:Int=3
@@ -22,10 +18,11 @@ class MakePost : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         this.supportActionBar!!.hide()
         setContentView(R.layout.activity_make_post)
+        this.supportActionBar!!.hide()
 
         reveive=intent
         val info=intent.extras
-        val editType=info?.getInt(key_editType)
+        val editType=info?.getInt(getString(R.string.key_editType))
         if(editType==editOrg)
         {
             btnPost.setOnClickListener{submitChanges()}
@@ -49,10 +46,10 @@ class MakePost : AppCompatActivity() {
         val imgURL:String=etPostImage.text.toString()
 
         val info=Bundle()
-        info.putString(key_title, title)
-        info.putString(key_description, description)
-        info.putString(key_url, imgURL)
-        info.putInt(key_editType, addActivity)
+        info.putString(getString(R.string.key_title), title)
+        info.putString(getString(R.string.key_description), description)
+        info.putString(getString(R.string.key_url), imgURL)
+        info.putInt(getString(R.string.key_editType), addActivity)
 
         val transmit=Intent(this, OrganisationHomeScreen::class.java)
         transmit.putExtras(info)
@@ -66,10 +63,10 @@ class MakePost : AppCompatActivity() {
         val imgURL:String=etPostImage.text.toString()
 
         val info=Bundle()
-        info.putString(key_title, title)
-        info.putString(key_description, description)
-        info.putString(key_url, imgURL)
-        info.putInt(key_editType, editOrg)
+        info.putString(getString(R.string.key_title), title)
+        info.putString(getString(R.string.key_description), description)
+        info.putString(getString(R.string.key_url), imgURL)
+        info.putInt(getString(R.string.key_editType), editOrg)
 
         val transmit=Intent(this, OrganisationHomeScreen::class.java)
         transmit.putExtras(info)
