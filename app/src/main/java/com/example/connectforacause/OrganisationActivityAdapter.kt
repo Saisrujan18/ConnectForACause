@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_activity.view.*
 import kotlinx.android.synthetic.main.item_description.view.*
 
-class Activity_DescriptionAdapter(private val Data: List<Any>):RecyclerView.Adapter<RecyclerView.ViewHolder>()
+class OrganisationActivityAdapter(private val Data: MutableList<Any>):RecyclerView.Adapter<RecyclerView.ViewHolder>()
 {
     private val ACTIVITY=0 //For Activity_Data
     private val DESC=1 //For Description_Data
@@ -60,14 +60,14 @@ class Activity_DescriptionAdapter(private val Data: List<Any>):RecyclerView.Adap
         }
     }
 
-    private fun bindVH_Activity(activity: Activity_DescriptionAdapter.ActivityViewHolder, position: Int) {
+    private fun bindVH_Activity(activity: OrganisationActivityAdapter.ActivityViewHolder, position: Int) {
         val data=Data[position] as Activity_Data
         activity.itemView.apply {
             tvActivityTitle.text=data.title
             tvActivityDescription.text=data.description
         }
     }
-    private fun bindVH_Description(description: Activity_DescriptionAdapter.DescriptionViewHolder, position: Int) {
+    private fun bindVH_Description(description: OrganisationActivityAdapter.DescriptionViewHolder, position: Int) {
         val data=Data[position] as Description_Data
         description.itemView.apply {
             tvNGODescription.text=data.description

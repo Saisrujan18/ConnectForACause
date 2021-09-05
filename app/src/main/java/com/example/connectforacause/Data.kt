@@ -14,3 +14,12 @@ data class OrganisationTileInfo(
     val Photo: String = "",
     val Title: String = "",
 )
+
+data class ActivityInfo(
+    val Volunteers: ArrayList<String> = ArrayList(),
+    val Count: Int = 0,
+    val Status: String = "",
+    val Theme: String = "",
+    val Title: String = "",
+
+)

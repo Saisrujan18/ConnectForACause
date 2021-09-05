@@ -14,6 +14,7 @@ import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_organisation_list.*
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -41,8 +42,6 @@ class OrganisationListActivity : AppCompatActivity(), OrganisationClicked {
         super.onCreate(savedInstanceState)
         this.supportActionBar!!.hide()
         setContentView(R.layout.activity_organisation_list)
-        receive=intent
-
         val query = db.collection("Organisations")
         val recyclerViewOptions = FirestoreRecyclerOptions.Builder<OrganisationTileInfo>().setQuery(query,OrganisationTileInfo::class.java).build()
 
@@ -51,23 +50,23 @@ class OrganisationListActivity : AppCompatActivity(), OrganisationClicked {
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
-    private fun fetchData(): Task<QuerySnapshot> {
-
-        val extraInfo=receive.extras
-        val login_type=extraInfo?.getInt(key_auth)
-        if(login_type==register)
-        {
-            val email=extraInfo?.getString(key_email)
-            val type=extraInfo?.getInt(key_type)
-
-            var entry : HashMap<String, Any> = HashMap<String, Any>()
-            entry.put(key_email, email?:"")
-            entry.put(key_type, type?:-1)
-            db.collection("Users").add(entry)
-            Toast.makeText(this, type.toString(), Toast.LENGTH_SHORT).show()
-        }
-        return db.collection("Organisations").get()
-    }
+//    private fun fetchData(): Task<QuerySnapshot> {
+//
+//        val extraInfo=receive.extras
+//        val login_type=extraInfo?.getInt(key_auth)
+//        if(login_type==register)
+//        {
+//            val email=extraInfo?.getString(key_email)
+//            val type=extraInfo?.getInt(key_type)
+//
+//            var entry : HashMap<String, Any> = HashMap<String, Any>()
+//            entry.put(key_email, email?:"")
+//            entry.put(key_type, type?:-1)
+//            db.collection("Users").add(entry)
+//            Toast.makeText(this, type.toString(), Toast.LENGTH_SHORT).show()
+//        }
+//        return db.collection("Organisations").get()
+//    }
 
     override fun onStart() {
         super.onStart()
@@ -78,10 +77,37 @@ class OrganisationListActivity : AppCompatActivity(), OrganisationClicked {
         super.onStop()
         adapter.stopListening()
     }
+    private fun getOrganisationDetails(Oid: String): Task<DocumentSnapshot> {
+        return db.collection("Organisations").document(Oid).get()
+    }
 
-    override fun onClick(item: String) {
+    private fun getActivityDetails(Aid: String): Task<DocumentSnapshot>{
+        return db.collection("Activities").document(Aid).get()
+    }
+    override fun onClick(Oid: String) {
         // intent Here.
-        Toast.makeText(this, "clicked : $item", Toast.LENGTH_LONG).show()
+        val organisationIntent = Intent(this@OrganisationListActivity, OrganisationActivity::class.java)
+        val Data: ArrayList<Any> = arrayListOf()
+        var Description: String = "";
+        CoroutineScope(Dispatchers.IO).launch {
+            val organisationDoc =
+                getOrganisationDetails(Oid).await().toObject(OrganisationTileInfo::class.java)
+            Description = organisationDoc?.Description!!
+//            for ( activity in organisationDoc.Activities){
+//                GlobalScope.launch {
+//                    val activityDoc = getActivityDetails(activity).await().toObject(ActivityInfo::class.java)
+//                    Data.add(
+//                        Activity_Data(
+//                            activityDoc?.Title!!,
+//                            activityDoc.Theme
+//                        )
+//                    )
+//                }
+//            }
+            organisationIntent.putExtra("Description", Description)
 
+            startActivity(organisationIntent)
+        }
+        Toast.makeText(this, "clicked : $Oid", Toast.LENGTH_LONG).show()
     }
 }

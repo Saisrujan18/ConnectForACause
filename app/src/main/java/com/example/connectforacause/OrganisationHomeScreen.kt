@@ -7,7 +7,6 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_organisation.*
 import kotlinx.android.synthetic.main.activity_organisation_home_screen.*
 
 class OrganisationHomeScreen : AppCompatActivity() {
@@ -37,7 +36,7 @@ class OrganisationHomeScreen : AppCompatActivity() {
         var activityList=getData()
 
         rvOrgHS.layoutManager= LinearLayoutManager(this)
-        var adapter=Activity_DescriptionAdapter(activityList)
+        var adapter=OrganisationActivityAdapter(activityList)
         rvOrgHS.adapter=adapter
     }
     private fun getData() : MutableList<Any> {
