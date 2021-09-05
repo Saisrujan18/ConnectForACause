@@ -16,15 +16,6 @@ class OrganisationListActivity : AppCompatActivity(), OrganisationClicked {
     private lateinit var receive:Intent
     private val db=Firebase.firestore
 
-    //receive ids same as transmit id
-    private val key_email:String="email"
-    private val key_type:String="type"
-    private val key_auth:String="authtype"
-
-    //user type
-    private val ngo:Int=0
-    private val volunteer:Int=1
-
     //login type
     private val register:Int=0
     private val signin:Int=1
@@ -61,15 +52,15 @@ class OrganisationListActivity : AppCompatActivity(), OrganisationClicked {
             }
 
         val extraInfo=receive.extras
-        val login_type=extraInfo?.getInt(key_auth)
+        val login_type=extraInfo?.getInt(getString(R.string.key_auth))
         if(login_type==register)
         {
-            val email=extraInfo?.getString(key_email)
-            val type=extraInfo?.getInt(key_type)
+            val email=extraInfo?.getString(getString(R.string.key_email))
+            val type=extraInfo?.getInt(getString(R.string.key_type))
 
             var entry : HashMap<String, Any> = HashMap<String, Any>()
-            entry.put(key_email, email?:"")
-            entry.put(key_type, type?:-1)
+            entry.put(getString(R.string.key_email), email?:"")
+            entry.put(getString(R.string.key_type), type?:-1)
             db.collection("Users").add(entry)
             Toast.makeText(this, type.toString(), Toast.LENGTH_SHORT).show()
         }

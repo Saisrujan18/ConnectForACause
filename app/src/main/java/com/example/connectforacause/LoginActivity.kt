@@ -15,20 +15,12 @@ import kotlinx.coroutines.withContext
 
 class LoginActivity : AppCompatActivity() {
 
-    //simplify ids to 0 and 1 for user type and login type
-    private val ngo:Int=0
-    private val volunteer:Int=1
-
     private val register:Int=0
     private val signin:Int=1
 
     private var success:Boolean=false
 
-    //transmit ids
-    private val key_email:String="email"
-    private val key_type:String="type"
-    private val key_auth:String="authtype"
-    private val key_HSState:String="HSState"
+    //transmit and receive keys stored in strings.xml
 
     private lateinit var auth : FirebaseAuth
 
@@ -51,8 +43,8 @@ class LoginActivity : AppCompatActivity() {
             return
         }
         val radioOption:Int=when(checkedID){
-            radioNGO.id->ngo
-            radioVolunteer.id->volunteer
+            radioNGO.id->resources.getInteger(R.integer.ngo)
+            radioVolunteer.id->resources.getInteger(R.integer.volunteer)
             else->-1
         }
         val email:String=etEmail.text.toString()
@@ -84,21 +76,21 @@ class LoginActivity : AppCompatActivity() {
     }
     private fun register(radioOption:Int, email:String)
     {
-        if(radioOption==volunteer) {
+        if(radioOption==resources.getInteger(R.integer.volunteer)) {
             val transmit = Intent(this@LoginActivity, OrganisationListActivity::class.java)
             val info= Bundle()
-            info.putInt(key_auth, register)
-            info.putInt(key_type, volunteer)
-            info.putString(key_email, email)
+            info.putInt(getString(R.string.key_auth), register)
+            info.putInt(getString(R.string.key_type), resources.getInteger(R.integer.volunteer))
+            info.putString(getString(R.string.key_email), email)
             transmit.putExtras(info)
             startActivity(transmit)
         }
-        if(radioOption==ngo){
+        if(radioOption==resources.getInteger(R.integer.ngo)){
             val transmit = Intent(this@LoginActivity, OrganisationHomeScreen::class.java)
             val info= Bundle()
-            info.putInt(key_HSState, register)
-            info.putInt(key_type, ngo)
-            info.putString(key_email, email)
+            info.putInt(getString(R.string.key_HSState), register)
+            info.putInt(getString(R.string.key_type), resources.getInteger(R.integer.ngo))
+            info.putString(getString(R.string.key_email), email)
             transmit.putExtras(info)
             startActivity(transmit)
         }
@@ -113,8 +105,8 @@ class LoginActivity : AppCompatActivity() {
             return
         }
         val radioOption:Int=when(checkedID){
-            radioNGO.id->ngo
-            radioVolunteer.id->volunteer
+            radioNGO.id->resources.getInteger(R.integer.ngo)
+            radioVolunteer.id->resources.getInteger(R.integer.volunteer)
             else->-1
         }
         val email:String=etEmail.text.toString()
@@ -144,21 +136,21 @@ class LoginActivity : AppCompatActivity() {
     }
     private fun signIn(radioOption:Int, email:String)
     {
-        if(radioOption==volunteer) {
+        if(radioOption==resources.getInteger(R.integer.volunteer)) {
             val transmit = Intent(this@LoginActivity, OrganisationListActivity::class.java)
             val info= Bundle()
-            info.putInt(key_auth, signin)
-            info.putInt(key_type, volunteer)
-            info.putString(key_email, email)
+            info.putInt(getString(R.string.key_auth), signin)
+            info.putInt(getString(R.string.key_type), resources.getInteger(R.integer.volunteer))
+            info.putString(getString(R.string.key_email), email)
             transmit.putExtras(info)
             startActivity(transmit)
         }
-        if(radioOption==ngo){
+        if(radioOption==resources.getInteger(R.integer.ngo)){
             val transmit = Intent(this@LoginActivity, OrganisationHomeScreen::class.java)
             val info= Bundle()
-            info.putInt(key_HSState, signin)
-            info.putInt(key_type, ngo)
-            info.putString(key_email, email)
+            info.putInt(getString(R.string.key_HSState), signin)
+            info.putInt(getString(R.string.key_type), resources.getInteger(R.integer.ngo))
+            info.putString(getString(R.string.key_email), email)
             transmit.putExtras(info)
             startActivity(transmit)
         }

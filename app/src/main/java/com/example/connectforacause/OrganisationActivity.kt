@@ -9,8 +9,6 @@ import kotlinx.android.synthetic.main.item_description.*
 
 class OrganisationActivity : AppCompatActivity() {
 
-    private var isScrollEnabled:Boolean=false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.supportActionBar!!.hide()
