@@ -71,6 +71,7 @@ class OrganisationActivityAdapter(private val Data: MutableList<Any>):RecyclerVi
         val data=Data[position] as Description_Data
         description.itemView.apply {
             tvNGODescription.text=data.description
+            tvNGONameHeading.text= data.description.substring(0, data.description.indexOf(' '));
         }
     }
 }

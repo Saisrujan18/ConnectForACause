@@ -1,4 +1,7 @@
 package com.example.connectforacause
+
+import java.io.Serializable
+
 //Also Image need to be stored
 data class Activity_Data(
     val title:String,
@@ -22,4 +25,4 @@ data class ActivityInfo(
     val Status: String = "",
     val Theme: String = "",
     val Title: String = "",
-)
+): Serializable

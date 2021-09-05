@@ -98,10 +98,10 @@ class OrganisationListActivity : AppCompatActivity(), OrganisationClicked {
             Log.d(TAG, "actini ${organisationDoc?.Activities}")
             Description = organisationDoc?.Description!!
 
-            Data = db.collection("Activities").whereIn(FieldPath.documentId(), organisationDoc.Activities).get().await().toObjects(ActivityInfo::class.java) as ArrayList<ActivityInfo>
+            Data = db.collection("Activities").whereIn(FieldPath.documentId(),organisationDoc.Activities.toList()).get().await().toObjects(ActivityInfo::class.java) as ArrayList<ActivityInfo>
+            Log.d(TAG, "DATAm123: $Data")
             organisationIntent.putExtra("Description", Description)
             organisationIntent.putExtra("Activities", Data)
-            Log.d(TAG, "HERE ${Data}")
             startActivity(organisationIntent)
         }
         Toast.makeText(this, "clicked : $Oid", Toast.LENGTH_LONG).show()

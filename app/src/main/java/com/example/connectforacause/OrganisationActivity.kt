@@ -24,13 +24,14 @@ class OrganisationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_organisation)
         receive = intent
         val description = receive.extras?.getString("Description")
-        val activities: ArrayList<ActivityInfo> = receive.extras?.getSerializable("Activities") as ArrayList<ActivityInfo>
+        val activities = receive.getSerializableExtra("Activities") as ArrayList<ActivityInfo>
         //Testing Assigning Dummy Data
         val Data: MutableList<Any> = mutableListOf()
         Data.add(Description_Data(description!!))
-        for (activity in activities)
+        for (activity in activities) {
             Data.add(Activity_Data(activity.Title, activity.Theme))
-        Log.d(TAG, "Act : ${activities}")
+        }
+//        Log.d(TAG, "Act : ${activities}")
         rvActivityList.layoutManager=LinearLayoutManager(this)
         val adapter = OrganisationActivityAdapter(Data)
         rvActivityList.adapter = adapter
